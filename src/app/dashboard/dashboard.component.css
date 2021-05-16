@@ -1,0 +1,11 @@
+.card{
+    text-align: center;
+    background-color: skyblue;
+}
+
+
+#divChart{
+    display :block;
+    width :800px;
+    height: 800px;
+}

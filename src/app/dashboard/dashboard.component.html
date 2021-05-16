@@ -1,0 +1,51 @@
+<div class="card">
+  <h1>Covid Current Data</h1>
+</div>
+<br />
+
+<label>Country</label>
+<select
+  [(ngModel)]="country"
+  (ngModelChange)="getCountry($event)"
+  Country="country"
+>
+  <option *ngFor="let country of countries" [ngValue]="country.Slug">
+    {{ country.Country }}
+  </option>
+</select>
+<br />
+<button mat-raised-button color="primary" (click)="getData()">
+  Get the data
+</button>
+<br />
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card text-white bg-warning mb-3" style="width: 18rem">
+      <div class="card-body">
+        <h2 class="card-title">Total Confirmed :{{ confirmed }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-success mb-3" style="width: 18rem">
+      <div class="card-body">
+        <h2 class="card-title">Total Recovery :{{ recovered }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-danger mb-3" style="width: 18rem">
+      <div class="card-body">
+        <h2 class="card-title">Total Deaths :{{ deaths }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+
+
+<div id="divChart" class="m-4">
+  
+  <canvas id="myChart"></canvas>
+</div>
