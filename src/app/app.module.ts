@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-//import { ChartComponent } from './chart/chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { CoronaserviceService } from './coronaservice.service';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -20,6 +20,7 @@ import { CoronaserviceService } from './coronaservice.service';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
