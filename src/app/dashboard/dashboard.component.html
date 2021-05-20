@@ -21,6 +21,13 @@
   Get the data
 </button>
 
+     <!-- <ng-container *ngIf="!confirmed">
+  <div class="column col-12 text-center pt-10 pb-10">
+    <div class="">Current Data not available</div>
+  </div>
+</ng-container>    -->
+
+
 <div class="row">
   <div class="col-sm-4">
     <div class="card text-white bg-warning mb-3" style="width: 18rem">
@@ -32,7 +39,7 @@
   <div class="col-sm-4">
     <div class="card text-white bg-success mb-3" style="width: 18rem">
       <div class="card-body">
-        <h2 class="card-title">Total Recovery :{{ recovered }}</h2>
+        <h2 class="card-title">Total Recovered :{{ recovered }}</h2>
       </div>
     </div>
   </div>
@@ -49,4 +56,5 @@
 
 <div id="divChart" class="m-4">
   <canvas id="myChart"></canvas>
+ 
 </div>

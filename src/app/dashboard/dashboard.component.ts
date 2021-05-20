@@ -15,10 +15,12 @@ export class DashboardComponent implements OnInit {
   recovered: number;
   deaths: number;
   myChart: any;
+  noData: number;
+  value:number;
 
   constructor(private corona: CoronaserviceService) {}
 
-  currentlyConfirmed: number[];
+  currentlyConfirmed: any;
   currentlyRecovered: number[];
   currentlyDeath: number[];
 
@@ -33,16 +35,19 @@ export class DashboardComponent implements OnInit {
   getCountry(country: string) {
     this.country = country;
   }
-
   getTheData() {
     this.corona.getCoronaCurrentData(this.country).subscribe((data) => {
-     //console.log(data[0].Confirmed);
-      var index = data.length - 1;
-      this.confirmed = data[index].Confirmed;
-      this.recovered = data[index].Recovered;
-      this.deaths = data[index].Deaths;
+       if (data.length == 0) {
+         console.log("no data");
+       } else {
+        var index = data.length - 1;
+        this.confirmed = data[index].Confirmed;
+        this.recovered = data[index].Recovered;
+        this.deaths = data[index].Deaths;
+      }
     });
   }
+
 
   getData() {
     this.getTheData();
@@ -51,14 +56,19 @@ export class DashboardComponent implements OnInit {
 
   getDailyData() {
     this.corona.getCoronaCurrentData(this.country).subscribe((data) => {
-  this.currentlyConfirmed = data[data.length - 1]["Confirmed"];
-  this.currentlyRecovered = data[data.length - 1]["Recovered"];
-  this.currentlyDeath = data[data.length - 1]["Deaths"];
-
-  if (this.myChart != undefined) this.myChart.destroy();
+      if (data.length == 0) {
+        console.log("no data");
+      } else {
+      var index = data.length - 1;
+      this.currentlyConfirmed = data[index].Confirmed;
+      this.currentlyRecovered = data[index].Recovered;
+      this.currentlyDeath = data[index].Deaths;}
+       
+     if(this.myChart != undefined)this.myChart.destroy();
 
       this.myChart = new Chart("myChart", {
-        type: 'bar',
+      
+        type: "bar",
         data: {
           labels: ["confirmed", "recovered", "death"],
           datasets: [
@@ -83,8 +93,9 @@ export class DashboardComponent implements OnInit {
             },
           ],
         },
-      })
+      });
     });
   }
+
 
 }
